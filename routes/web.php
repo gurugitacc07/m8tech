@@ -26,4 +26,6 @@ Route::get('signout', [CustomAuthController::class, 'signOut'])->name('signout')
 Route::get('category', [CategoryController::class, 'CategoryIndex'])->name('category');
 Route::get('category_add', [CategoryController::class, 'CategoryAdd'])->name('category_add');
 Route::post('category_store', [CategoryController::class, 'CategoryStore'])->name('category_store');
-Route::post('category_edit', [CategoryController::class, 'CategoryEdit'])->name('category_edit');
+Route::get('category_edit/{id}', [CategoryController::class, 'CategoryEdit'])->name('category_edit');
+Route::post('category_update/{id}', [CategoryController::class, 'CategoryUpdate'])->name('category_update');
+Route::get('category_delete/{id}', [CategoryController::class, 'CategoryDelete'])->name('category_delete');

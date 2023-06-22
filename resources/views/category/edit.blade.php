@@ -17,13 +17,13 @@
             {{ session('status') }}
         </div>
         @endif
-        <form action="{{route('category_store')}}" method="POST" enctype="multipart/form-data">
+        <form action="{{route('category_update',$edit_data->id)}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Category Name:</strong>
-                        <input type="text" name="category_name" class="form-control" >
+                        <input type="text" name="category_name" class="form-control" value="{{$edit_data->category_name}}">
                         @error('name')
                         <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                         @enderror

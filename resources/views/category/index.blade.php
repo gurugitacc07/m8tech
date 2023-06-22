@@ -34,8 +34,9 @@
             	<tr>
             		<td>{{$i}}</td>
             		<td>{{$val->category_name}}</td>
-            		<td><a href="{{route('category_edit',$val->id)}}" class="btn btn-primary">Edit</a>
-            		<a href="" ></a></td>
+            		<td><a class="btn btn-primary" href="{{ route('category_edit',$val->id) }}">Edit</a>
+            		<a class="btn btn-primary" href="{{ route('category_delete',$val->id) }}">Delete</a></td>
+            		
             	</tr>
                @endforeach
                @php

@@ -105,7 +105,7 @@
                 <!-- Add your sidebar content here  -->
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('category')}}">Services</a>
+                        <a class="nav-link" href="{{route('category')}}">Category</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="">Bookings</a>

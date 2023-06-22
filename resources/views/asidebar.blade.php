@@ -54,7 +54,7 @@
     <!-- Header -->
     <header class="navbar navbar-expand-lg">
         <div class="container-fluid" style="gap: 35px;">
-            <a class="navbar-brand" href="#">M8 Tech</a>
+            <a class="navbar-brand" href="#">Bike Service</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -110,11 +110,13 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('subcategory')}}">Sub Category</a>
                     </li>
+
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('products')}}">Products</a>
+                        <a class="nav-link" href="{{route('products.index')}}">Products</a>
                     </li>
+
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('invoices')}}">Invoices</a>
+                        <a class="nav-link" href="{{route('invoices.index')}}">invoices</a>
                     </li>
                 </ul>
             </aside>

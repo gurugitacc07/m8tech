@@ -7,7 +7,7 @@
                 <h2>Invoice</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('invoice.create') }}"> Create New Invoice</a>
+                <a class="btn btn-success" href="{{ route('invoices.create') }}"> Create New Invoice</a>
             </div>
         </div>
     </div>

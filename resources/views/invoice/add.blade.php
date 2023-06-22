@@ -23,7 +23,7 @@
     </div>
 @endif
    
-<form action="{{ route('products.store') }}" method="POST">
+<form action="{{ route('invoices.store') }}" method="POST">
     @csrf
   
      <div class="row">
@@ -39,29 +39,42 @@
                     <input type="text" name="company_name" value="" class="form-control" placeholder="Company Name">
                 </div>
             </div>
-            @foreach ($Products as $value)
-            <div class="col-xs-3 col-sm-3 col-md-3">
+            <div class="row">
+                <div class="col-xs-1 col-sm-1 col-md-1">
+                    <strong>Select:</strong>
+                </div>
+                <div class="col-xs-3 col-sm-3 col-md-3">
+                    <strong>Product Name:</strong>
+                </div>
+                <div class="col-xs-3 col-sm-3 col-md-3">
+                    <strong>Amount:</strong>
+                </div>
+                <div class="col-xs-3 col-sm-3 col-md-3">
+                    <strong>Quantity:</strong>
+                </div>
+            </div>
+            @foreach ($products as $value)
+            <div class="row">
+            <div class="col-xs-1 col-sm-1 col-md-1">
                 <div class="form-group">
                     <input type="checkbox" value="{{$value->id}}" name="product_id[]">
                 </div>
             </div>
             <div class="col-xs-3 col-sm-3 col-md-3">
                 <div class="form-group">
-                    <strong>Product Name:</strong>
-                    <input type="number" name="product_name[]" class="form-control" value="{{ $product->product_name }}" required>
+                    <input type="text" name="product_name[]" class="form-control" value="{{ $value->product_name }}" readonly>
                 </div>
             </div>
             <div class="col-xs-3 col-sm-3 col-md-3">
                 <div class="form-group">
-                    <strong>Amount:</strong>
-                    <input type="number" name="amount[]" class="form-control" value="{{ $product->amount }}" required>
+                    <input type="number" name="amount[]" class="form-control" value="{{ $value->amount }}" required>
                 </div>
             </div>
             <div class="col-xs-3 col-sm-3 col-md-3">
                 <div class="form-group">
-                    <strong>Quantity:</strong>
                     <input type="number" name="qty[]" class="form-control" value="0" required>
                 </div>
+            </div>
             </div>
             @endforeach
 

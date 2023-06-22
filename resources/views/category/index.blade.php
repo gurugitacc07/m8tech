@@ -21,13 +21,26 @@
             <thead>
                 <tr>
                     <th>S.No</th>
-                    <th>Company Name</th>
-                    <th>Company Email</th>
-                    <th>Company Address</th>
+                    <th>Category Name</th>
+                    
                     <th width="280px">Action</th>
                 </tr>
             </thead>
             <tbody>
-               
+            	@php
+            	$i=1;
+            	@endphp
+            	@foreach($listdata as $val)
+            	<tr>
+            		<td>{{$i}}</td>
+            		<td>{{$val->category_name}}</td>
+            		<td><a href="{{route('category_edit',$val->id)}}" class="btn btn-primary">Edit</a>
+            		<a href="" ></a></td>
+            	</tr>
+               @endforeach
+               @php
+            	$i++;
+            	@endphp
+
     </div>
 @endsection

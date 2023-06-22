@@ -68,7 +68,10 @@
                         <a class="nav-link" href="#">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
+                       <a class="nav-link" href="{{ route('signout') }}"
+                               >
+                                Logout
+                            </a>
                     </li>
                 </ul>
 
@@ -76,17 +79,15 @@
                     <!-- Authentication Links -->
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ Auth::user()->name }}
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route('logout') }}"
-                               onclick="event.preventDefault();
-                                             document.getElementById('logout-form').submit();">
+                            <a class="dropdown-item" href="{{ route('signout') }}"
+                               >
                                 {{ __('Logout') }}
                             </a>
 
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            <form id="logout-form" action="" method="POST" class="d-none">
                                 @csrf
                             </form>
                         </div>
@@ -103,22 +104,16 @@
             <aside class=" sidebar" style=" width: 10%;"> 
                 <!-- Add your sidebar content here  -->
                 <ul class="nav flex-column">
-                    @if(auth()->user()->is_admin == 1)
                     <li class="nav-item">
-                        <a class="nav-link" href="{{url('services')}}">Services</a>
+                        <a class="nav-link" href="">Services</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{url('bookings')}}">Bookings</a>
+                        <a class="nav-link" href="">Bookings</a>
                     </li>
-                    @endif
-                    @if(auth()->user()->is_admin == 0)
-                    <!-- <li class="nav-item">
-                        <a class="nav-link" href="#">Service Centers</a>
-                    </li> -->
+                    
                     <li class="nav-item">
-                        <a class="nav-link" href="{{url('bookings')}}">My Bookings</a>
+                        <a class="nav-link" href="">My Bookings</a>
                     </li>
-                    @endif
                 </ul>
             </aside>
 

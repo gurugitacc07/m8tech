@@ -27,7 +27,7 @@ class CategoryController extends Controller
     }
     public function CategoryEdit($id)
     {
-        $edit_data = Category::find($id);
+        $edit_data = Category::where('is_deleted',0)->find($id);
          return view('category.edit',compact('edit_data'));
     }
     public function CategoryUpdate(Request $request,$id)
@@ -52,7 +52,7 @@ class CategoryController extends Controller
     }
     public function SubCategoryAdd(Request $request)
     {
-        $category = Category::get();
+        $category = Category::where('is_deleted',0)->get();
         return view('subcategory.add',compact('category'));
     }
     public function SubCategoryStore(Request $request)
@@ -67,8 +67,8 @@ class CategoryController extends Controller
     }
     public function SubCategoryEdit($id)
     {
-        $category = Category::get();
-        $edit_data = Subcategory::find($id);
+        $category = Category::where('is_deleted',0)->get();
+        $edit_data = Subcategory::where('is_deleted',0)->find($id);
          return view('subcategory.edit',compact('edit_data','category'));
     }
     public function SubCategoryUpdate(Request $request,$id)

@@ -8,7 +8,7 @@
                     <h2>Add Company</h2>
                 </div>
                 <div class="pull-right">
-                    <a class="btn btn-primary" href="{{route('category')}}"> Back</a>
+                    <a class="btn btn-primary" href="{{route('subcategory')}}"> Back</a>
                 </div>
             </div>
         </div>
@@ -17,19 +17,24 @@
             {{ session('status') }}
         </div>
         @endif
-        <form action="{{route('category_update',$edit_data->id)}}" method="POST" enctype="multipart/form-data">
+        <form action="{{route('subcategory_update',$edit_data->id)}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
+                        <strong>Subcategory Name:</strong>
+                        <input type="text" name="sub_category_name" class="form-control" value="{{$edit_data->sub_category_name}}" required>
+                    </div>
+                    <div class="form-group">
                         <strong>Category Name:</strong>
-                        <input type="text" name="category_name" class="form-control" value="{{$edit_data->category_name}}">
-                        @error('name')
-                        <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
-                        @enderror
+                        <select name="category_id" class="form-control" required>
+                            @foreach($category as $cate)
+                            <option value="{{$cate->id}}" @if($cate->id == $edit_data->category_id) selected @endif>{{$cate->category_name}}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
-                
+
                 <button type="submit" class="btn btn-primary  mt-5">Update</button>
             </div>
         </form>

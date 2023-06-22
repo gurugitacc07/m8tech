@@ -8,7 +8,7 @@
                     <h2>Category List</h2>
                 </div>
                 <div class="pull-right mb-2">
-                    <a class="btn btn-success" href="{{route('category_add')}}"> Create category</a>
+                    <a class="btn btn-success" href="{{route('subcategory_add')}}"> Create Subcategory</a>
                 </div>
             </div>
         </div>
@@ -33,9 +33,9 @@
             	@foreach($listdata as $val)
             	<tr>
             		<td>{{$i}}</td>
-            		<td>{{$val->category_name}}</td>
-            		<td><a class="btn btn-primary" href="{{ route('category_edit',$val->id) }}">Edit</a>
-            		<a class="btn btn-primary" href="{{ route('category_delete',$val->id) }}">Delete</a></td>
+            		<td>{{$val->sub_category_name}}</td>
+            		<td><a class="btn btn-primary" href="{{ route('subcategory_edit',$val->id) }}">Edit</a>
+            		<a class="btn btn-primary" href="{{ route('subcategory_delete',$val->id) }}">Delete</a></td>
 
             	</tr>
                 @php

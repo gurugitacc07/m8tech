@@ -101,18 +101,14 @@
     <div class="container-fluid">
         <div class="row">
             <!-- Sidebar -->
-            <aside class=" sidebar" style=" width: 10%;"> 
+            <aside class=" sidebar" style=" width: 10%;">
                 <!-- Add your sidebar content here  -->
                 <ul class="nav flex-column">
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('category')}}">Category</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">Bookings</a>
-                    </li>
-                    
-                    <li class="nav-item">
-                        <a class="nav-link" href="">My Bookings</a>
+                        <a class="nav-link" href="{{route('subcategory')}}">Sub Category</a>
                     </li>
                 </ul>
             </aside>

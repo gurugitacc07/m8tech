@@ -70,7 +70,10 @@
                             <input type="number" name="rate[]" id="rate1" data-id="1" class="form-control rate"/>
                         </td>
                         <td class="col-sm-3">
-                            <input type="number" name="qty[]" id="qty1" data-id="1" class="form-control qty"/>
+                            <input type="number" name="qty[]" id="qty1" data-id="1" class="form-control qty" value="0"/>
+                        </td>
+                        <td class="col-sm-3">
+                            <input type="number" name="actualamount[]" id="actualamount1" data-id="1" class="form-control _actualamount" value="0"/>
                         </td>
                         <td class="col-sm-2"><a class="deleteRow" data-id="1"></a>
 
@@ -89,7 +92,7 @@
             </table>
 
 
-            <input type="hidden" name="grandtotal" id="grandtotal" value="0" class="form-control"/>
+            <input type="text" name="grandtotal" id="grandtotal" value="0" class="form-control"/>
 
 
             <div class="col-xs-12 col-sm-12 col-md-12" style="margin-top: 1%;">
@@ -113,7 +116,9 @@
 
             cols += '<td class="col-sm-4"><div class="form-group"><select class="form-select" aria-label="multiple select example" name="product_id[]" id="product_id'+rowCount+'" data-id="'+rowCount+'"><option selected>Open this select menu</option>@foreach($products as $val)<option value="{{$val->id}}">{{$val->product_name}}</option>@endforeach</select></div></td>';
             cols += '<td><input type="number" class="form-control rate" id="rate'+rowCount+'" data-id="'+rowCount+'" name="rate[]"/></td>';
-            cols += '<td><input type="number" class="form-control qty" id="qty'+rowCount+'" data-id="'+rowCount+'" name="qty[]"/></td>';
+            cols += '<td><input type="number" class="form-control qty" id="qty'+rowCount+'" data-id="'+rowCount+'" name="qty[]" value="0"/></td>';
+
+            cols += '<td><input type="number" class="form-control _actualamount" id="actualamount'+rowCount+'" data-id="'+rowCount+'" name="actualamount[]" value="0"/></td>';
 
             cols += '<td><input type="button" class="ibtnDel btn btn-md btn-danger " data-id="'+rowCount+'" value="Delete"></td>';
             newRow.append(cols);
@@ -131,39 +136,35 @@
 
     });
 
-    $(document).ready(function(){
+   
 
-            var sum=[];
-        $(document.body).on('change',".qty",function () {
-            var dataid = $(this).attr('data-id'); 
-            alert('dataid'+dataid);
 
-            var qnty = $(this).val();
-            var rate_val = $('#rate'+dataid).val();
+$(document).on('change', '.rate,.qty', function() {
+    var i = $(this).attr("data-id");
+    alert(i);
+    var quantity = $("#qty" + i).val();
+    alert('quantity'+quantity);
+    var org_price = $("#rate" + i).val();
+    alert('org_price'+org_price);
+    var qtyprice = quantity * org_price;
+    alert('qtyprice'+qtyprice);
+    $("#actualamount" + i).val(qtyprice); // this is _actualamount
+    bottom_calculation_single_item_based();
+});
 
-            var row_sum = parseInt(qnty)*parseFloat(rate_val);
-            
-            sum.push(row_sum);
-            console.log('sum',sum);
-            // for (var i in sum) {
-            //     console.log('rrr',sum[i]);
-            //   sum[i];
-            // }
 
-            // Creating variable to store the sum
-let sum1 = 0;
- 
-// Running the for loop
-for (let i = 0; i < sum.length; i++) {
-    //console.log('rrr',sum[i]);
-     sum1 += sum[i];
+function bottom_calculation_single_item_based(){
+var total = 0;
+    for(var i = 0; i < $("._actualamount").length;i++){
+        var checkValue = parseFloat($("._actualamount").eq(i).val());
+        alert('checkValue'+checkValue);
+        if(checkValue){
+           total = parseFloat(total) + parseFloat(checkValue);
+        }
+        
+    }
+
+    alert('total'+total);
+    $("#grandtotal").val(total);
 }
- 
-            alert('total'+sum1);
-            // $('#grandtotal').val(total);
-
-        });
-    });
-
-
 </script>>

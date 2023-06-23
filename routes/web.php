@@ -42,5 +42,6 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::resource('products', ProductController::class);
 	Route::resource('invoices', InvoiceController::class);
 
+
 });
 

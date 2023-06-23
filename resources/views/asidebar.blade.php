@@ -54,45 +54,19 @@
     <!-- Header -->
     <header class="navbar navbar-expand-lg">
         <div class="container-fluid" style="gap: 35px;">
-            <a class="navbar-brand" href="#">Bike Service</a>
+            <a class="navbar-brand" href="#">MI Tech</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="collapse navbar-collapse" id="navbarNav" style="justify-content: end;">
                 <ul class="navbar-nav ml-auto">
                     <!-- Add your header navigation links here -->
+
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
-                    </li>
-                    <li class="nav-item">
-                       <a class="nav-link" href="{{ route('signout') }}"
-                               >
-                                Logout
-                            </a>
+                       <a class="nav-link" href="{{ route('signout') }}">Logout</a>
                     </li>
                 </ul>
 
-                <ul class="navbar-nav ms-auto">
-                    <!-- Authentication Links -->
-                    <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        </a>
-
-                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route('signout') }}"
-                               >
-                                {{ __('Logout') }}
-                            </a>
-
-                            <form id="logout-form" action="" method="POST" class="d-none">
-                                @csrf
-                            </form>
-                        </div>
-                    </li>
-                </ul>
             </div>
         </div>
     </header>

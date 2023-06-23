@@ -75,7 +75,7 @@
                         <td class="col-sm-3">
                             <input type="number" name="actualamount[]" id="actualamount1" data-id="1" class="form-control _actualamount" value="0"/>
                         </td>
-                        <td class="col-sm-2"><a class="deleteRow" data-id="1"></a>
+                        <td class="col-sm-2"><a class="deleteRow btn btn-danger" data-id="1">Delete</a>
 
                         </td>
                     </tr>
@@ -141,13 +141,9 @@
 
 $(document).on('change', '.rate,.qty', function() {
     var i = $(this).attr("data-id");
-    alert(i);
     var quantity = $("#qty" + i).val();
-    alert('quantity'+quantity);
     var org_price = $("#rate" + i).val();
-    alert('org_price'+org_price);
     var qtyprice = quantity * org_price;
-    alert('qtyprice'+qtyprice);
     $("#actualamount" + i).val(qtyprice); // this is _actualamount
     bottom_calculation_single_item_based();
 });
@@ -157,14 +153,12 @@ function bottom_calculation_single_item_based(){
 var total = 0;
     for(var i = 0; i < $("._actualamount").length;i++){
         var checkValue = parseFloat($("._actualamount").eq(i).val());
-        alert('checkValue'+checkValue);
         if(checkValue){
            total = parseFloat(total) + parseFloat(checkValue);
         }
         
     }
 
-    alert('total'+total);
     $("#grandtotal").val(total);
 }
 </script>>

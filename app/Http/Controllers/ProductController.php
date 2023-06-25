@@ -17,7 +17,7 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::latest()->paginate(5);
-    
+
         return view('product.index',compact('products'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
@@ -29,8 +29,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $category = Category::get();
-        $subcategory = Subcategory::get();
+        $category = Category::where('is_deleted',0)->get();
+        $subcategory = Subcategory::where('is_deleted',0)->get();
         return view('product.add')->with(['category'=>$category,'subcategory'=>$subcategory]);
     }
 
@@ -54,7 +54,7 @@ class ProductController extends Controller
         $service->product_name = $request->product_name;
         $service->amount = $request->amount;
         $service->save();
-     
+
         return redirect()->route('products.index')
                         ->with('success','Product created successfully.');
     }
@@ -78,8 +78,8 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        $category = Category::get();
-        $subcategory = Subcategory::get();
+        $category = Category::where('is_deleted',0)->get();
+        $subcategory = Subcategory::where('is_deleted',0)->get();
         return view('product.edit',compact('product','category','subcategory'));
     }
 
@@ -99,7 +99,7 @@ class ProductController extends Controller
         ]);
 
         $product->update($request->all());
-    
+
         return redirect()->route('products.index')
                         ->with('success','Product updated successfully');
     }
@@ -113,7 +113,7 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         $product->delete();
-    
+
         return redirect()->route('products.index')
                         ->with('success','Product deleted successfully');
     }
